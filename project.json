@@ -1,0 +1,13 @@
+{
+  "name": "MAX FIRE",
+  "project": "MAX FIRE Game Studio",
+  "version": "0.1.0",
+  "platform": "Android",
+  "game_type": "Third-Person 3D Battle Royale",
+  "modules": [
+    "Terminal",
+    "Code Editor",
+    "File Manager",
+    "3D Game Studio"
+  ]
+}

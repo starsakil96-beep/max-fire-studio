@@ -1,0 +1,8 @@
+{
+  "appId": "com.maxfire.game",
+  "appName": "MAX FIRE",
+  "webDir": "www",
+  "android": {
+    "backgroundColor": "#101820"
+  }
+}

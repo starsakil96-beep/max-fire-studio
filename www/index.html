@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MAX FIRE - Lobby</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:#111522;
+  color:white;
+  font-family:Arial,sans-serif;
+}
+button{cursor:pointer;font-weight:bold}
+.top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:14px;
+  background:#1b2130;
+  border-bottom:2px solid #ff6333;
+}
+.logo{font-size:24px;font-weight:900;color:#ff6333}
+.money{font-size:13px;line-height:1.8}
+.profile{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:12px;
+  background:#20283a;
+}
+.avatar{
+  width:48px;height:48px;border-radius:10px;
+  background:linear-gradient(135deg,#ff6333,#ffbd59);
+  display:grid;place-items:center;font-size:28px;
+}
+.small{font-size:12px;color:#bdc8db}
+.level{
+  height:6px;background:#424b5e;border-radius:8px;
+  margin-top:6px;overflow:hidden
+}
+.level div{width:65%;height:100%;background:#ff6333}
+.stage{
+  min-height:390px;
+  position:relative;
+  overflow:hidden;
+  background:linear-gradient(#263d60 0%,#7392a0 48%,#455b43 49%,#172a24 100%);
+}
+.sun{
+  position:absolute;top:50px;right:35px;
+  width:65px;height:65px;border-radius:50%;
+  background:#ffc777;box-shadow:0 0 45px #ffc77788;
+}
+.mountain{
+  position:absolute;bottom:95px;left:-10%;
+  width:120%;height:160px;
+  background:#344b50;
+  clip-path:polygon(0 100%,15% 20%,30% 65%,48% 0,65% 60%,80% 15%,100% 100%);
+}
+.ground{
+  position:absolute;bottom:0;width:100%;height:100px;
+  background:linear-gradient(#40543a,#17251e);
+}
+.hero{
+  position:absolute;bottom:65px;left:50%;
+  transform:translateX(-50%);
+  width:100px;height:245px;
+  display:flex;flex-direction:column;align-items:center;
+}
+.head{
+  width:48px;height:52px;border-radius:40% 40% 45% 45%;
+  background:#d9a17c;border:3px solid #25252b;
+  position:relative;z-index:2;
+}
+.hair{
+  width:48px;height:20px;border-radius:50% 50% 15% 15%;
+  background:#20212a;position:absolute;top:0;
+}
+.bodyman{
+  width:75px;height:95px;margin-top:-3px;
+  background:linear-gradient(90deg,#252b3a,#586477,#252b3a);
+  clip-path:polygon(20% 0,80% 0,100% 100%,0 100%);
+  border:2px solid #ff6333;
+}
+.legs{display:flex;gap:8px;margin-top:-2px}
+.leg{width:27px;height:80px;background:#252b36;border:2px solid #151923}
+.arm{
+  position:absolute;top:65px;width:20px;height:83px;
+  background:#303746;border-radius:10px;
+}
+.arm.left{left:0;transform:rotate(12deg)}
+.arm.right{right:0;transform:rotate(-20deg)}
+.hero-label{
+  position:absolute;bottom:22px;left:50%;
+  transform:translateX(-50%);
+  white-space:nowrap;font-size:11px;
+  color:#ffe0b8;letter-spacing:2px
+}
+.event{
+  position:absolute;top:15px;left:12px;
+  padding:8px 10px;background:#111522bb;
+  border-left:3px solid #ff6333;font-size:12px;
+}
+.mode{padding:15px}
+.mode h3{margin:0 0 12px}
+.cards{display:flex;gap:10px}
+.card{
+  flex:1;min-width:0;padding:12px 5px;
+  border:1px solid #414c62;border-radius:10px;
+  text-align:center;background:#20283a;
+  font-size:12px
+}
+.card.active{border:2px solid #ff6333;background:#3a2930}
+.start-wrap{padding:0 15px 18px}
+.start{
+  width:100%;padding:17px;border:0;border-radius:9px;
+  color:#17131a;font-size:19px;
+  background:linear-gradient(90deg,#ff6333,#ffb34f);
+}
+.nav{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  background:#1b2130;padding:12px 3px;
+  border-top:1px solid #424b5e;
+}
+.nav button{
+  background:transparent;border:0;color:#cbd5e1;
+  font-size:11px;padding:8px 2px
+}
+.nav button span{display:block;font-size:21px;margin-bottom:5px}
+#notice{
+  padding:10px;text-align:center;
+  color:#ffd2b8;font-size:12px;min-height:34px
+}
+/* MAX FIRE Landscape Lobby */
+@media (orientation: landscape) {
+  body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto 1fr auto auto;
+    min-height: 100vh;
+  }
+
+  .top {
+    grid-column: 1 / -1;
+    grid-row: 1;
+  }
+
+  .profile {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+
+  .stage {
+    grid-column: 1;
+    grid-row: 3 / 6;
+    min-height: 0;
+  }
+
+  .mode {
+    grid-column: 2;
+    grid-row: 3;
+    padding: 10px;
+  }
+
+  .start-wrap {
+    grid-column: 2;
+    grid-row: 4;
+    padding: 5px 10px;
+  }
+
+  .nav {
+    grid-column: 2;
+    grid-row: 5;
+    padding: 5px;
+  }
+
+  #notice {
+    grid-column: 1 / -1;
+    grid-row: 6;
+  }
+
+  .hero {
+    transform: translateX(-50%) scale(.72);
+    transform-origin: bottom center;
+  }
+}
+</style>
+</head>
+
+<body>
+<header class="top">
+  <div class="logo">🔥 MAX FIRE</div>
+  <div class="money">🪙 12,500 &nbsp; 💎 300</div>
+</header>
+
+<section class="profile">
+  <div class="avatar">🧑</div>
+  <div style="flex:1">
+    <strong>MAX WARRIOR</strong>
+    <div class="small">Lv. 12 &nbsp; • &nbsp; Rookie</div>
+    <div class="level"><div></div></div>
+  </div>
+  <div>⚙️</div>
+</section>
+
+<section class="stage">
+  <div class="sun"></div>
+  <div class="mountain"></div>
+  <div class="ground"></div>
+
+  <div class="event">⚡ BATTLE SEASON<br>NEW CHALLENGES</div>
+
+  <div class="hero">
+    <div class="head"><div class="hair"></div></div>
+    <div class="arm left"></div>
+    <div class="arm right"></div>
+    <div class="bodyman"></div>
+    <div class="legs">
+      <div class="leg"></div>
+      <div class="leg"></div>
+    </div>
+  </div>
+
+  <div class="hero-label">MAX WARRIOR • READY FOR BATTLE</div>
+</section>
+
+<section class="mode">
+  <h3>SELECT GAME MODE</h3>
+  <div class="cards">
+    <button class="card active" data-mode="Classic">🏝️<br><br>CLASSIC</button>
+    <button class="card" data-mode="Ranked">🏆<br><br>RANKED</button>
+    <button class="card" data-mode="Training">🎯<br><br>TRAINING</button>
+  </div>
+</section>
+
+<div class="start-wrap">
+  <button class="start" id="start">▶ START</button>
+</div>
+
+<nav class="nav">
+  <button data-page="Character"><span>🧍</span>CHARACTER</button>
+  <button data-page="Vault"><span>🎒</span>VAULT</button>
+  <button data-page="Store"><span>🛒</span>STORE</button>
+  <button data-page="Friends"><span>👥</span>FRIENDS</button>
+</nav>
+
+<div id="notice" aria-live="polite">WELCOME TO MAX FIRE</div>
+
+<script>
+let selectedMode = "Classic";
+
+document.querySelectorAll("[data-mode]").forEach(button=>{
+  button.addEventListener("click",()=>{
+    selectedMode=button.dataset.mode;
+    document.querySelectorAll("[data-mode]").forEach(b=>{
+      b.classList.toggle("active",b===button);
+    });
+    document.getElementById("notice").textContent=
+      selectedMode+" mode selected";
+  });
+});
+
+document.getElementById("start").addEventListener("click",()=>{
+  document.getElementById("notice").textContent=
+    selectedMode+" selected — Battle mode is not connected yet.";
+});
+
+document.querySelectorAll("[data-page]").forEach(button=>{
+  button.addEventListener("click",()=>{
+    document.getElementById("notice").textContent=
+      button.dataset.page+" — this feature will be built next.";
+  });
+});
+</script>
+</body>
+</html>
